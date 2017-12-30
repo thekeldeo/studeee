@@ -1,0 +1,150 @@
+.app-wrapper {
+    padding-top: 60px;
+    height: calc(100vh);
+    position: relative;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+.item-card a {
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    height: 90%;
+}
+
+.item-card:hover .card, .item-card:active .card {
+    text-decoration: none;
+    color: #000;
+    opacity: 0.7;
+}
+
+.item-card:hover .add-btn {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 0;
+}
+
+.item-card .add-btn {
+    display: none;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.ins-avt {
+    width: 50%;
+    margin: 0 auto 10px;
+}
+
+.text-content {
+    margin: 20px 0;
+}
+
+.list-course {
+    overflow: auto;
+}
+
+.bg {
+    width: 100%;
+    height: calc(100vh);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: url('img/bg3.jpg');
+    background-size: cover;
+}
+
+.bg-dt {
+    width: 100%;
+    background: url('img/bg-dt.jpg');
+    background-size: cover;
+    height: calc(50vh);
+    background-position: center;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.slogan {
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.form-inline {
+    justify-content: space-between;
+}
+
+.fixed-bottom {
+    padding: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.selected-course {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px dashed #ccc;
+    margin-right: 10px;
+}
+
+.close {
+    cursor: pointer;
+    top: 0;
+    right: 0;
+}
+
+.selected-course p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 140px;
+    margin-bottom: 0;
+}
+
+.selected-course {
+    float: left;
+}
+
+.selected-course .flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.results-table-scroll {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.results-set-table table {
+    table-layout: fixed;
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.results-set-table .tr .td, .results-set-table .tr .th, .results-set-table tr td, .results-set-table tr th {
+    white-space: nowrap;
+    color: #181a21;
+}
+
+.units-table {
+    min-width: 1px !important;
+}
+
+.btn-danger {
+    position: fixed;
+    top: 100px;
+    right: 50px;
+}

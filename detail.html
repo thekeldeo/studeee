@@ -1,0 +1,67 @@
+<div class="bg-dt"></div>
+<div class="container app-wrapper">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>
+                {{detail.title}}
+            </h2>
+            <img ng-src="{{detail.image}}" width="100%" alt="">
+
+            <div class="text-content">
+                {{detail.content}}
+            </div>
+            <div class="text-content">
+                <h4>Sau khóa học bạn sẽ:</h4>
+                <ul>
+                    <li ng-repeat="item in detail.benefit">{{item}}</li>
+                </ul>
+            </div>
+
+            <div class="text-content">
+                <h4>Khóa học sẽ phù hợp với:</h4>
+                <ul>
+                    <li ng-repeat="item in detail.fit">{{item}}</li>
+                </ul>
+            </div>
+
+            <div class="text-content">
+                <h4>Yêu cầu:</h4>
+                <ul>
+                    <li ng-repeat="item in detail.require">{{item}}</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-md-4" id="detail">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Thông tin khóa học</h5>
+                    <p class="card-text">{{detail.description}}</p>
+                    <div>
+                        <strong>Tổng số bài giảng: </strong>
+                        {{detail.total}}
+                    </div>
+                    <div>
+                        <strong>Thời lượng khóa học: </strong>
+                        {{detail.time}} giờ
+                    </div>
+                    <div>
+                        <strong>Giá tiền: </strong>
+                        {{detail.price | currency:""}}0 VND
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Thông tin giảng viên</h5>
+                    <img class="ins-avt" width="50%" ng-src="https://robohash.org/{{detail.instructor}}"
+                         alt="{{detail.instructor}}" class="rounded-circle">
+                    <div>
+                        <div class="card-text">{{detail.instructor}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

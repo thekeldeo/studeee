@@ -1,0 +1,147 @@
+<div ng-show="!showCompare" id="container">
+    <div class="bg">
+        <div class="text-center">
+            <h1 class="slogan">Lorem ipsum</h1>
+            <h3 class="text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras metus</h3>
+            <button type="button" class="btn btn-primary btn-lg" ng-click="gotoCourse()">LET'S GO</button>
+        </div>
+    </div>
+    <div class="container app-wrapper" id="#courses">
+        <div class="alert text-center alert-secondary">
+            <form class="form-inline">
+                <div ng-show="!isSearch">
+                    <select style="margin-right: 8px" ng-model="filterCategory" class="custom-select">
+                        <option value="all" selected>All Category</option>
+                        <option value="office tool">Office Tool</option>
+                        <option value="design">Design</option>
+                    </select>
+                    <select ng-model="filterMoney" class="custom-select">
+                        <option value="all" selected>All Price</option>
+                        <option value="low">Dưới 200k</option>
+                        <option value="mid">Từ 200k tới 1000</option>
+                        <option value="high">Trên 1000k</option>
+                    </select>
+                </div>
+                <div ng-show="isSearch">
+                    <input class="form-control" type="search" ng-model="search" placeholder="Search"
+                           aria-label="Search">
+                </div>
+                <div ng-show="!isSearch">
+                    <select style="margin-right: 8px" ng-model="orderBy" class="custom-select">
+                        <option value="" disabled selected>Sắp xếp theo</option>
+                        <option value="-title">Theo tên</option>
+                        <option value="price">Giá tiền từ thấp tới cao</option>
+                        <option value="-price">Giá tiền từ cao tới thấp</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary" ng-show="!isSearch" ng-click="isSearch = !isSearch">
+                        Tìm kiếm khóa học
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-show="isSearch" ng-click="isSearch = !isSearch">Sắp
+                        xếp và lọc
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="row list-course d-flex">
+            <div class="col-lg-3 col-md-4  item-card"
+                 ng-repeat="item in data | filter: search | filterCategory: filterCategory | filterMoney: filterMoney | orderBy: orderBy">
+                <a class="card" target="_self" ng-href="/chi-tiet/{{$index}}">
+                    <img class="card-img-top" ng-src="{{item.image}}"
+                         alt="{{item.name}}">
+                    <div class="card-body ">
+                        <h4>
+                            {{item.title}}
+                        </h4>
+                        <div class="card-text text-muted">
+                            {{item.description}}
+                        </div>
+                        <div class="card-text">
+
+                        </div>
+                    </div>
+                </a>
+                <div class="add-btn">
+                    <button ng-click="pushCompare(item)" ng-if="!item.isSelected" class="btn btn-primary">Add To
+                        Compare
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-bottom light-bg" ng-if="compareList.length > 0">
+        <div>
+            <div class="selected-course position-relative" ng-repeat="item in compareList">
+                <p>{{item.title}}</p>
+                <p>{{item.from}}</p>
+                <button type="button" class="close position-absolute" aria-label="Close" ng-click="removeItem($index)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center">
+            <button ng-show="compareList.length > 1" class="btn btn-outline-primary" ng-click="openCompare()">Compare
+            </button>
+        </div>
+    </div>
+</div>
+
+<div ng-if="showCompare">
+    <div class="container app-wrapper">
+        <button class="btn btn-danger pull-right" ng-click="closeCompare()">Close</button>
+        <div class="results-table-scroll">
+            <table class="table table-bordered table-hover results-set-table">
+                <thead>
+                <tr>
+                    <th>Tên</th>
+                    <th>Giá</th>
+                    <th>Thời lượng</th>
+                    <th>Số bài giảng</th>
+                    <th>Giảng viên</th>
+                    <th>Đầu ra</th>
+                    <th>Yêu Cầu</th>
+                    <th>Phù hợp với</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in compareList">
+                    <td>{{item.title}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.time}}</td>
+                    <td>{{item.total}}</td>
+                    <td>{{item.instructor}}</td>
+                    <td>
+                        <table class="units-table table-bordered">
+                            <tbody>
+                            <tr class="table-info" ng-repeat="child in item.benefit">
+                                <td>{{child}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="units-table">
+                            <tbody>
+                            <tr class="table-warning" ng-repeat="child in item.require">
+                                <td>{{child}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="units-table">
+                            <tbody>
+                            <tr class="table-success" ng-repeat="child in item.fit">
+                                <td>{{child}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
